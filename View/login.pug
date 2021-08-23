@@ -1,0 +1,26 @@
+extends base.pug
+block styling 
+ link(rel='stylesheet' , type='text/css', media='screen' , href='./css/loginpage.css')
+block content 
+ form
+  .heading 
+   | Login
+  .entry
+    .entry-text
+      | Email
+    input#email(type='email' name='Email' required='')
+  .entry
+    .entry-text
+      | Password
+    input#pw(type='password' name='Password')
+  span#message
+  p New to Food App?
+   a(href='/signup') SIGNUP 
+   |  first
+  .btn-parent
+   button.btn.btn-full.form-button.loginBtn Log In
+  br
+  .btn-parent
+   button.btn.btn-full.form-button.forgetPassword Forget Password
+block scripts  
+ script(src="./js/login.js")

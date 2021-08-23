@@ -1,0 +1,44 @@
+extends base.pug
+block styling 
+ link(rel='stylesheet' , type='text/css', media='screen' , href='./css/profilepage.css')
+block header 
+ .navlinks.fixed
+  ul.showcase-ul
+   li.showcase-li
+    a(href='/') FEATURES
+   li.showcase-li
+    a(href='/details') DETAILS
+   li.showcase-li
+    a(href='/reviews') REVIEWS
+   li.showcase-li
+    a(href='/plans') PLANS
+   if user.name 
+    li.showcase-li
+     a(href="/profile") #{user.name}
+    li.showcase-li
+     a(href='/logout') LOGOUT
+   else
+    li.showcase-li
+     a(href='/login') LOGIN
+block content 
+ .full-profile
+  .image-container
+   img.customer-img(src=user.pImage)
+   input(type="file" name = "user" id="profileImage")
+  .user-info 
+   form
+    .entry
+     .entry-text 
+      | Name
+     input#name(type='text' name='Name' required='' value=(src = user.name) readOnly)
+    .entry
+     .entry-text
+      | Email
+     input#email(type='email' name='Email' required='' value=(src = user.email) readOnly) 
+    .btnss
+     .btn-parent
+     button.btn.btn-full.form-button.Editable Edit                     
+     .btn-parent
+     button.btn.btn-full.form-button.Save Save
+block scripts  
+ script(src="./js/profileImage.js")

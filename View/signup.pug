@@ -1,0 +1,29 @@
+extends base.pug
+block styling 
+ link(rel='stylesheet' , type='text/css', media='screen' , href='./css/signuppage.css')
+block content 
+ form
+  .heading 
+   | Signup
+  .entry
+    .entry-text 
+      | Name
+    input#name(type='text' name='Name' required='')
+  .entry
+    .entry-text
+      | Email
+    input#email(type='email' name='Email' required='')
+  .entry
+    .entry-text
+      | Password
+    input#pw(type='password' name='Password')
+  .entry
+    .entry-text
+      | Confirm Password
+    input#cpw(type='password' name='confirm-password')
+  p Already have an account? Click here to 
+   a(href='/login') login 
+  .btn-parent
+    button.btn.btn-full.form-button.signupBtn Sign Up
+block scripts  
+ script(src="./js/signup.js")

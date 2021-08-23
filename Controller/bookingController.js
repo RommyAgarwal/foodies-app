@@ -1,0 +1,57 @@
+const stripe = require("stripe");
+const bookingModel = require("../Model/bookingModel");
+const planModel = require("../Model/plansModel");
+const userModel = require("../Model/usersModel");
+const stripeObj = stripe('sk_test_51JQ5p9SBZlr3xrhgo8rLUiVfKeklf9foDsFwfAD6FlzLObakl40EJED5Mcsex7O2b7XVYwILYnO2mMsRe2TaeI3F00DFTpEaaw');
+
+
+async function createPaymentSession(req,res){
+    try{
+        const userId = req.id;
+        const {planId } = req.body;
+        const plan = await planModel.findById(planId);
+        const user = await userModel.findById(userId);
+
+        const session = await stripeObj.checkout.sessions.create({
+            payment_method_types: [
+                'card',
+            ],
+            // customer:user.name,
+            // customer_email: user.email,
+              line_items: [
+                {
+                    price_data:{
+                        currency:'usd',
+                        product_data:{
+                            name:plan.name,
+                        },
+                        unit_amount: plan.price*100,
+                    },
+                    quantity:1,
+                  // TODO: replace this with the `price` of the product you want to sell
+                //   price: '{{PRICE_ID}}',
+                //   quantity: 1,
+                },
+              ],
+              mode: 'payment',
+              success_url: 'http://localhost:3000',
+              cancel_url: 'http://localhost:3000',
+        });
+        res.json({
+            session
+        })
+
+    }
+    catch(error){
+        res.json({
+            message:"failed to create payment session",
+            error
+        })
+    }
+}
+
+async function createNewBooking(req,res){
+    
+}
+
+module.exports.createPaymentSession = createPaymentSession;

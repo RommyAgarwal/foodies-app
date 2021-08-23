@@ -1,0 +1,11 @@
+extends base.pug
+block styling 
+ link(rel='stylesheet' , type='text/css', media='screen' , href='./css/planspage.css')
+block content 
+ section.signup 
+  .signup-parent
+   each plan in plans
+    include planCard.pug
+append scripts 
+ script(src="https://js.stripe.com/v3/")
+ script(src="./js/buyPlan.js")

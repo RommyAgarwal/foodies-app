@@ -1,0 +1,19 @@
+doctype html 
+html 
+ head 
+  meta(charset = "utf-8")
+  meta(http-equiv='X-UA-Compatible' ,content='IE=edge')
+  link(rel="preconnect" , href="https://fonts.googleapis.com")
+  link(rel="preconnect" , href="https://fonts.gstatic.com" , crossorigin)
+  link(href="https://fonts.googleapis.com/css2?family=Lato&display=swap" , rel="stylesheet")
+  block styling
+   link(rel='stylesheet' , type='text/css', media='screen' , href='./css/style.css')
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" , integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" , crossorigin="anonymous" , referrerpolicy="no-referrer")
+ body 
+  block header 
+   include header.pug
+  block content 
+   h1 I am base file 
+  include footer.pug
+  block scripts
+   script(src='./js/main.js')
