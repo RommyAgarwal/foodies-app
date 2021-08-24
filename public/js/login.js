@@ -7,7 +7,6 @@ let forgetPassword = document.querySelector(".forgetPassword");
 
 forgetPassword.addEventListener("click" , async function(e){
     try{
-        // hiuhooijoo
         e.preventDefault();
         if(email.value){
             let obj = await axios.post("https://foodiesssss.herokuapp.com/api/user/forgetPassword" , {email:email.value});
