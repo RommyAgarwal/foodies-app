@@ -50,8 +50,14 @@ async function createPaymentSession(req,res){
     }
 }
 
+async function checkoutComplete(req,res){
+    console.log("done");
+}
+
+
 async function createNewBooking(req,res){
     
 }
 
 module.exports.createPaymentSession = createPaymentSession;
+module.exports.checkoutComplete = checkoutComplete;
