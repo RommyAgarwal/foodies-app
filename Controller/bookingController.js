@@ -34,8 +34,8 @@ async function createPaymentSession(req,res){
                 },
               ],
               mode: 'payment',
-              success_url: 'http://localhost:3000',
-              cancel_url: 'http://localhost:3000',
+              success_url: 'https://foodiesssss.herokuapp.com/',
+              cancel_url: 'https://foodiesssss.herokuapp.com/',
         });
         res.json({
             session
@@ -51,7 +51,8 @@ async function createPaymentSession(req,res){
 }
 
 async function checkoutComplete(req,res){
-    console.log("done");
+    console.log("payment done");
+    console.log(req);
 }
 
 
