@@ -8,6 +8,7 @@ const stripeObj = stripe('sk_test_51JQ5p9SBZlr3xrhgo8rLUiVfKeklf9foDsFwfAD6FlzLO
 
 async function createPaymentSession(req,res){
     try{
+        console.log("req=> " , req);
         const userId = req.id;
         const {planId } = req.body;
         const plan = await planModel.findById(planId);
@@ -17,11 +18,11 @@ async function createPaymentSession(req,res){
             payment_method_types: [
                 'card',
             ],
+            customer_email: user.email,
+            client_reference_id: planId,
             // customer:user.name,
             // customer_email: user.email,
             // client_reference_id: planId,
-            client_reference_id: planId,
-            customer_email: user.email,
             line_items: [
             {
                 price_data:{
