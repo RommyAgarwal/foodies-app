@@ -1,4 +1,4 @@
-const { response } = require("express");
+// const { response } = require("express");
 const stripe = require("stripe");
 const bookingModel = require("../Model/bookingModel");
 const planModel = require("../Model/plansModel");
@@ -20,7 +20,7 @@ async function createPaymentSession(req,res){
             // customer:user.name,
             // customer_email: user.email,
             // client_reference_id: planId,
-            client_reference_id: plan['_id'],
+            client_reference_id: plan["_id"],
             customer_email: user.email,
             line_items: [
             {
