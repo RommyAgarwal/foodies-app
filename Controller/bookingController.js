@@ -90,7 +90,8 @@ async function checkoutComplete(req,res){
 
 
 async function createNewBooking(userEmail,planId){
-    console.log(userEmail," ", planId);
+    console.log(userEmail);
+    console.log(planId);
 }
 
 module.exports.createPaymentSession = createPaymentSession;
