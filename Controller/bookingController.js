@@ -8,8 +8,8 @@ const stripeObj = stripe('sk_test_51JQ5p9SBZlr3xrhgo8rLUiVfKeklf9foDsFwfAD6FlzLO
 
 async function createPaymentSession(req,res){
     try{
-        console.log("req=> " , req);
-        const userId = req.id;
+        const userId = req["id"];
+        console.log("req=> " , userID);
         const {planId } = req.body;
         const plan = await planModel.findById(planId);
         const user = await userModel.findById(userId);
