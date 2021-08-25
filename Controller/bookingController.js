@@ -20,24 +20,26 @@ async function createPaymentSession(req,res){
             // customer:user.name,
             // customer_email: user.email,
             // client_reference_id: planId,
-              line_items: [
-                {
-                    price_data:{
-                        currency:'usd',
-                        product_data:{
-                            name:plan.name,
-                        },
-                        unit_amount: plan.price*100,
+            client_reference_id: plan['_id'],
+            customer_email: user.email,
+            line_items: [
+            {
+                price_data:{
+                    currency:'usd',
+                    product_data:{
+                        name:plan.name,
                     },
-                    quantity:1,
+                    unit_amount: plan.price*100,
+                },
+                quantity:1,
                   // TODO: replace this with the `price` of the product you want to sell
                 //   price: '{{PRICE_ID}}',
                 //   quantity: 1,
-                },
-              ],
-              mode: 'payment',
-              success_url: 'https://foodiesssss.herokuapp.com/',
-              cancel_url: 'https://foodiesssss.herokuapp.com/',
+            },
+            ],
+            mode: 'payment',
+            success_url: 'https://foodiesssss.herokuapp.com/',
+            cancel_url: 'https://foodiesssss.herokuapp.com/',
         });
         res.json({
             session
