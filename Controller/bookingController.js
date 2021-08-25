@@ -13,7 +13,7 @@ async function createPaymentSession(req,res){
         // console.log("req=> " , userId);
         const plan = await planModel.findById(planId);
         const user = await userModel.findById(userId);
-        console.log(user);
+        // console.log(user);
         const session = await stripeObj.checkout.sessions.create({
             payment_method_types: [
                 'card',
@@ -56,10 +56,23 @@ async function createPaymentSession(req,res){
 }
 
 async function checkoutComplete(req,res){
-    // const END_POINT_KEY = process.env.END_POINT_KEY;
-    // console.log("payment done");
-    console.log( "req body=> " , req.body);
-    // const stripeSignature = req.headers['stripe-signature'];
+    try{
+        const END_POINT_KEY = process.env.END_POINT_KEY;
+        const stripeSignature = req.headers['stripe-signature'];
+        // console.log("payment done");
+        // console.log( "req body=> " , req.body);
+        if(req.body.type == "checkout.session.object"){
+            const userEmail = req.body.data.object.customer_email;
+            const planId = req.body.data.object.client_reference_id;
+            await createNewBooking(userEmail,planId);
+        }
+
+    }
+    catch(error){
+        res.json({
+            error
+        })
+    }
     // let event;
     // try{
     //      event = stripeObj.webhooks.constructEvent(req.body,stripeSignature,END_POINT_KEY);
@@ -76,8 +89,8 @@ async function checkoutComplete(req,res){
 };
 
 
-async function createNewBooking(req,res){
-    
+async function createNewBooking(userEmail,planId){
+    console.log(userEmail," ", planId);
 }
 
 module.exports.createPaymentSession = createPaymentSession;
