@@ -1,3 +1,4 @@
+const { response } = require("express");
 const stripe = require("stripe");
 const bookingModel = require("../Model/bookingModel");
 const planModel = require("../Model/plansModel");
@@ -17,7 +18,8 @@ async function createPaymentSession(req,res){
                 'card',
             ],
             // customer:user.name,
-            // customer_email: user.email,
+            customer_email: user.email,
+            client_reference_id: planId,
               line_items: [
                 {
                     price_data:{
@@ -51,9 +53,24 @@ async function createPaymentSession(req,res){
 }
 
 async function checkoutComplete(req,res){
-    console.log("payment done");
-    console.log(req);
-}
+    // const END_POINT_KEY = process.env.END_POINT_KEY;
+    // console.log("payment done");
+    console.log( "req body=> " , req.body);
+    // const stripeSignature = req.headers['stripe-signature'];
+    // let event;
+    // try{
+    //      event = stripeObj.webhooks.constructEvent(req.body,stripeSignature,END_POINT_KEY);
+    //     }
+    // catch(err){
+    //     res.status(400).send(`Webhook Error: ${err.message}`);
+    // }
+    // if(event.type == "checkout.session.object"){
+    //     console.log(event.data.object);
+    // }
+    // else{
+    //     console.log("event not created!!!");
+    // }
+};
 
 
 async function createNewBooking(req,res){
