@@ -13,7 +13,7 @@ async function createPaymentSession(req,res){
         // console.log("req=> " , userId);
         const plan = await planModel.findById(planId);
         const user = await userModel.findById(userId);
-
+        console.log(user);
         const session = await stripeObj.checkout.sessions.create({
             payment_method_types: [
                 'card',
