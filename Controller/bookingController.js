@@ -61,7 +61,7 @@ async function checkoutComplete(req,res){
         const stripeSignature = req.headers['stripe-signature'];
         // console.log("payment done");
         // console.log( "req body=> " , req.body);
-        if(req.body.type == "checkout.session.object"){
+        if(req.body.type == "checkout.session.completed"){
             const userEmail = req.body.data.object.customer_email;
             const planId = req.body.data.object.client_reference_id;
             await createNewBooking(userEmail,planId);
