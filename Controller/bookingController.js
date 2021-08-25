@@ -10,7 +10,7 @@ async function createPaymentSession(req,res){
     try{
         const userId = req["id"];
         const {planId} = req.body;
-        console.log("req=> " , userId);
+        // console.log("req=> " , userId);
         const plan = await planModel.findById(planId);
         const user = await userModel.findById(userId);
 
@@ -18,7 +18,7 @@ async function createPaymentSession(req,res){
             payment_method_types: [
                 'card',
             ],
-            // customer_email: user.email,
+            customer_email: user.email,
             client_reference_id: planId,
             // customer:user.name,
             // customer_email: user.email,
