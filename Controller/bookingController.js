@@ -21,7 +21,7 @@ async function createPaymentSession(req,res){
             // customer_email: user.email,
             // client_reference_id: planId,
             client_reference_id: planId,
-            // customer_email: user.email,
+            customer_email: user.email,
             line_items: [
             {
                 price_data:{

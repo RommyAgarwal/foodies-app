@@ -135,9 +135,9 @@ async function isLoggedIn(req,res,next){
 async function protectRouter(req,res,next){
     try{
         //const token = req.headers.authorization.split(" ").pop();
-        const token = req.cookies.jwt;
+        let token = req.cookies.jwt;
         // console.log(token);
-        const payload = jwt.verify(token , SECRET_KEY);
+        let payload = jwt.verify(token , SECRET_KEY);
         if(payload){
             req.id = payload.id;
             next();
