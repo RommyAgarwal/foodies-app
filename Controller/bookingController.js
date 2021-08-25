@@ -18,7 +18,7 @@ async function createPaymentSession(req,res){
             payment_method_types: [
                 'card',
             ],
-            customer_email: user.email,
+            // customer_email: user.email,
             client_reference_id: planId,
             // customer:user.name,
             // customer_email: user.email,
