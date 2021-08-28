@@ -94,6 +94,7 @@ async function createNewBooking(userEmail,planId){
        const user = await userModel.findOne({email:userEmail});
        const plan = await planModel.findById(planId);
 
+       const userId = user["_id"];
        if(user.bookedPlanId == undefined){
            const bookingOrder = {
                userId: userId,
