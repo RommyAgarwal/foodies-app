@@ -10,6 +10,7 @@ forgetPassword.addEventListener("click" , async function(e){
         e.preventDefault();
         if(email.value){
             let obj = await axios.post("https://foodiesssss.herokuapp.com/api/user/forgetPassword" , {email:email.value});
+            message.innerHTML = "reset link sent !!!";
             console.log(obj);
         }
     }
