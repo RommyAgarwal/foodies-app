@@ -12,7 +12,7 @@ profileImage.addEventListener("change" , async function(e){
      console.log(file);
     let formData = new FormData();
     formData.append("user" , file);
-    let obj = await axios.patch("http://localhost:3000/api/user/updateProfilePhoto" , formData);
+    let obj = await axios.patch("https://foodiesssss.herokuapp.com/api/user/updateProfilePhoto" , formData);
     console.log(obj);
     if(obj.data.message){
         window.location.reload();
@@ -34,7 +34,7 @@ save.addEventListener("click" , async function(e){
                 "name" : username.value,
                 "email" : useremail.value
             }
-            let obj = await axios.patch("http://localhost:3000/api/user" , {updateObj:updateObject});
+            let obj = await axios.patch("https://foodiesssss.herokuapp.com/api/user" , {updateObj:updateObject});
             console.log(obj);
             if(obj.data.data){
                 window.location.reload();

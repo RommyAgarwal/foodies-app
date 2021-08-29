@@ -15,7 +15,7 @@ signupBtn.addEventListener("click" , async function(e){
                 "password" : pw.value,
                 "confirmPassword" : cpw.value
             }
-            let obj = await axios.post("http://localhost:3000/api/user/signup" , signupObject);
+            let obj = await axios.post("https://foodiesssss.herokuapp.com/api/user/signup" , signupObject);
             console.log(obj);
             if(obj.data.data){
                 window.location.href= "/login";

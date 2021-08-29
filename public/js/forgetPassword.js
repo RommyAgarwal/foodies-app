@@ -8,7 +8,7 @@ resetBtn.addEventListener("click" , async function(e){
         e.preventDefault();
         if(npw.value && cnpw.value){
             let token = (window.location.href).split("Password/")[1];
-            let obj = await axios.patch("http://localhost:3000/api/user/resetPassword/:token" , { password:npw.value , confirmPassword:cnpw.value , token: token});
+            let obj = await axios.patch("https://foodiesssss.herokuapp.com/api/user/resetPassword/:token" , { password:npw.value , confirmPassword:cnpw.value , token: token});
             if(obj.data.user){
                 window.location.href= "/login";
             }
