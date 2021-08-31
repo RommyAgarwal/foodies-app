@@ -123,7 +123,7 @@ async function isLoggedIn(req,res,next){
             req.name = user.name;
             req.user = user;
             const userBookingObject = await bookingModel.findById(user.bookedPlanId);
-            const plansName = [];
+            let plansName = [];
             for(let i=0;i<userBookingObject.bookedPlans.length;i++){
                 plansName.push(userBookingObject.bookedPlans[i].name);
             }
