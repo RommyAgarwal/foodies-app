@@ -14,9 +14,9 @@ profileImage.addEventListener("change" , async function(e){
     formData.append("user" , file);
     let obj = await axios.patch("https://foodiesssss.herokuapp.com/api/user/updateProfilePhoto" , formData);
     console.log(obj);
-    if(obj.data.message){
-        window.location.reload();
-    }
+    // if(obj.data.message){
+    //     window.location.reload();
+    // }
 })
 
 edit.addEventListener("click" , function(e){
