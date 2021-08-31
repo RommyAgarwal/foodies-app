@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 // const { SECRET_KEY, GMAIL_PW, GMAIL_ID } = require("../config/secrets");
 
 const nodemailer = require("nodemailer");
+const bookingModel = require("../Model/bookingModel");
 //const smtptransport = require("nodemailer-smtp-transport");
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
@@ -121,6 +122,9 @@ async function isLoggedIn(req,res,next){
             let user = await userModel.findById(payload.id)
             req.name = user.name;
             req.user = user;
+            const userBookingObject = await bookingModel.findById(user.bookedPlanId);
+            req.plansArray = userBookingObject.bookedPlans;
+            console.log(req.plansArray);
             next();
         }
         else{

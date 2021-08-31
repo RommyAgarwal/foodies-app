@@ -27,7 +27,7 @@ function getSignUpPage(req,res){
 }
 
 function getProfilePage(req,res){
-    res.render("profilePage.pug"  , {user: req.user});
+    res.render("profilePage.pug"  , {user: req.user , plansArray: req.plansArray});
 }
 
 async function getPlansPage(req,res){
