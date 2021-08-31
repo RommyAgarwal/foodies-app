@@ -351,6 +351,8 @@
     width: 70%;
     padding-right: 500px;
     padding-bottom:40px;
+    display: flex;
+    justify-content: center;
 }
 
 .btnss{
