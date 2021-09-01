@@ -197,7 +197,7 @@ async function updateProfilePhoto(req,res){
     try{
         let file = req.file;
         console.log(file);
-        let imagePath = file.destination + "/" + file.filename;
+        let imagePath = file.destination + file.filename;
         // console.log(imagePath);
         imagePath = imagePath.substring(6);
         console.log(imagePath);

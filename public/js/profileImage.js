@@ -9,7 +9,7 @@ const useremail = document.querySelector('#email');
 profileImage.addEventListener("change" , async function(e){
     e.preventDefault();
     let file = profileImage.files[0];
-     console.log(file);
+    console.log(file);
     let formData = new FormData();
     formData.append("user" , file);
     let obj = await axios.patch("https://foodiesssss.herokuapp.com/api/user/updateProfilePhoto" , formData);
