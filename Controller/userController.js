@@ -198,11 +198,6 @@ async function updateProfilePhoto(req,res){
         let file = req.file;
         console.log(file);
         let imagePath = file.destination + "/" + file.filename;
-        // await sharp(req.file.path)
-        //     .resize(500, 500)
-        //     .toFormat("jpg")
-        //     .jpeg({ quality: 90 })
-        //     .toFile(imagePath);
         // console.log(imagePath);
         imagePath = imagePath.substring(6);
         console.log(imagePath);
