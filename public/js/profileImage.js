@@ -12,7 +12,7 @@ profileImage.addEventListener("change" , async function(e){
      console.log(file);
     let formData = new FormData();
     formData.append("user" , file);
-    let obj = await axios.patch("https://foodiesssss.herokuapp.com/api/user/updateProfilePhoto" , formData);
+    let obj = await axios.patch("api/user/updateProfilePhoto" , formData);
     console.log(obj);
     if(obj.data.message){
         window.location.reload();
