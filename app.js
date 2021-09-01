@@ -10,7 +10,7 @@ const app = express();
 
 //tracks incoming requests and see there is data and will fed in req.body
 app.use(express.json());
-app.use( express.static(__dirname + "/public"));
+app.use( express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 
 app.set("view engine" , "pug");
